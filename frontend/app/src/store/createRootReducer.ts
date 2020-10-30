@@ -11,7 +11,7 @@ export type ReduxState = {
 
 const createRootReducer = combineReducers<ReduxState>({
   main: features.main.reducer,
-  dashboard: features.single.reducer,
+  dashboard: features.dashboard.reducer,
 })
 
 export default createRootReducer
