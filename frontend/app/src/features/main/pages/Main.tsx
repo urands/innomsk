@@ -19,12 +19,17 @@ const Main = (props: PropsFromRedux) => {
             <div className={styles.input}>
               <input className={styles.login}></input>
               <input className={styles.password}></input>
-              <a className={styles.foggoten}>Забыли пароль?</a>
+              <a className={styles.foggoten} href='##'>
+                Забыли пароль?
+              </a>
             </div>
             <button className={styles.submit}>Войти</button>
             <div className={styles.footer}>
               <div className={styles.support}>
-                Техподдержка: <a className={styles.link}>egip@mos.ru</a>
+                Техподдержка:{' '}
+                <a className={styles.link} href='mailto:egip@mos.ru'>
+                  egip@mos.ru
+                </a>
               </div>
             </div>
           </form>
