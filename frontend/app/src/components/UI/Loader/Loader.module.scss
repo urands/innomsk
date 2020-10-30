@@ -1,0 +1,7 @@
+@import 'assets/sass/styles';
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  @extend ._content_center;
+}
