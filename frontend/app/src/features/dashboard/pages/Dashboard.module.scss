@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+
+  .inner {
+    display: flex;
+
+    .panel {
+      width: 100%;
+      max-width: 285px;
+    }
+
+    .wrapperMap {
+      width: 100%;
+    }
+  }
+}

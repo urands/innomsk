@@ -4,16 +4,26 @@ import styles from './MainLayout.module.scss'
 
 type Props = {
   children: ReactNode
+  roll: string
 }
 
 const MainLayout = (props: Props) => {
-  const { children } = props
+  const { children, roll } = props
+
+  const TypeProfile = () => {
+    if (roll === 'admin') {
+      return <h3 className={styles.title}>Аналитик</h3>
+    } else if (roll === 'manager') {
+      return <h3 className={styles.title}>Руководитель подразделения</h3>
+    } else if (roll === 'inspector') {
+      return <h3 className={styles.title}>Инспектор</h3>
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
-      <main className={styles.main}>
-        <div className={styles.container}>{children}</div>
-      </main>
+      <header className={styles.header}>{TypeProfile()}</header>
+      <div className={styles.main}>{children}</div>
     </div>
   )
 }

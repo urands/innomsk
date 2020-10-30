@@ -1,7 +1,7 @@
 import * as main from './main'
-import * as single from './dashboard'
+import * as dashboard from './dashboard'
 
 export default {
   main,
-  single,
+  dashboard,
 }
