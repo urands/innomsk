@@ -1,2 +1,2 @@
+export const LOGIN = 'LOGIN'
 export const FETCH_CARD_LIST = 'FETCH_CARD_LIST'
-export const FETCH_ABILITI_HERO = 'FFETCH_ABILITI_HERO'

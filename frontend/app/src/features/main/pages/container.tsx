@@ -6,15 +6,16 @@ import * as selectors from '../selectors'
 
 type OwnProps = {
   loading: boolean
+  role: null | string
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
   loading: selectors.loaderSelector,
+  role: selectors.roleSelector,
 })
 
 const mapDispatchToProps = {
-  fetchCardList: actions.fetchCardList,
-  fetchAbilityHero: actions.fetchAbilityHero,
+  authentication: actions.authentication,
 }
 
 export const connector = connect(mapStateToProps, mapDispatchToProps)

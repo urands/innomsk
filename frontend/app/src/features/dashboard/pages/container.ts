@@ -6,10 +6,12 @@ import * as selectors from '../selectors'
 
 type OwnProps = {
   loading: boolean
+  role: string | null
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
   loading: selectors.loaderSelector,
+  role: selectors.roleSelector,
 })
 
 const mapDispatchToProps = {

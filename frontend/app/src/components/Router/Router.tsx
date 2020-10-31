@@ -1,13 +1,16 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Redirect } from 'react-router-dom'
+
+import PublicRoute from './PublicRoute'
+import ProtectedRoute from './ProtectedRoute'
 
 import features from 'features'
 
 export const Router = () => {
   return (
     <Switch>
-      <Route path='/' exact component={features.main.pages.Main} />
-      <Route path='/dashboard' component={features.dashboard.pages.Dashboard} />
+      <PublicRoute path='/' exact component={features.main.pages.Main} />
+      <ProtectedRoute path='/dashboard' component={features.dashboard.pages.Dashboard} />
       <Redirect to='/' />
     </Switch>
   )
