@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 
 import features from 'features'
 import { MainState } from 'features/main/types'
-import { SingleState } from 'features/dashboard/types'
+import { DashboardState } from 'features/dashboard/types'
 
 export type ReduxState = {
   main: MainState
-  dashboard: SingleState
+  dashboard: DashboardState
 }
 
 const createRootReducer = combineReducers<ReduxState>({

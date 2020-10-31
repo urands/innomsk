@@ -1,1 +1,1 @@
-export { fetchDetailedAbilityHero } from './featchDetailesAbility'
+export {}
