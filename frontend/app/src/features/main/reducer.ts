@@ -25,7 +25,6 @@ export default handleActions<MainState, Payload>(
     [t.LOGIN]: (state, action) =>
       produce(state, (draft) => {
         const { payload } = action
-
         if (payload) {
           draft.user = payload.user
           draft.UIState.role = payload.role
