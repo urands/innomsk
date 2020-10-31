@@ -18,15 +18,23 @@ const Dashboard = (props: PropsFromRedux) => {
     }
   }
 
+  const renderMap = () => {
+    if (role === 'inspector') {
+      return <Map />
+    } else if (role === 'inspector') {
+      return <Map />
+    }
+  }
+
   return (
     <MainLayout role={role}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.inner}>
             {renderPanel()}
-            <div className={styles.wrapperMap}>
-              <Map />
-            </div>
+            {role === 'inspector' || role === 'inspector' ? (
+              <div className={styles.wrapperMap}>{renderMap()}</div>
+            ) : null}
           </div>
         </div>
       </div>
