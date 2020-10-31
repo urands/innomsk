@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link  href="http://egiptest.mos.ru/jsapi/lib/ol-5.2.0.css" rel="stylesheet" type="text/css">
+    <link  href="http://egiptest.mos.ru/jsapi/lib/ol-ext-3.0.1.css" rel="stylesheet" type="text/css">
+    <script src="http://egiptest.mos.ru/jsapi/lib/proj4-2.4.4.js"></script>
+    <script src="http://egiptest.mos.ru/jsapi/lib/ol-5.2.0.js"></script>
+    <script src="http://egiptest.mos.ru/jsapi/lib/ol-ext-3.0.1.js"></script>
+    <script src="http://egiptest.mos.ru/jsapi/dist/egip.js"></script>
+
+</head>
+<body>
+
+Scrips enable
+
+<div id="map" class="map"></div>
+
+
+<script >
+  egip.setConfig({
+
+    /** `baseURL` will be prepended to `url` unless `url` is absolute.
+     *  It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
+     *  to methods of that instance.
+     *  https://github.com/axios/axios
+    */
+    baseURL: 'http://31.148.136.80/',
+
+
+    /**
+     * `withCredentials` indicates whether or not cross-site Access-Control requests
+     *  should be made using credentials
+     *  https://github.com/axios/axios
+    */
+    withCredentials: true
+  })
+
+(async function () {
+    egip.setConfig({
+        baseURL: '/'
+    });
+     egip.api.login({
+       login: 'hakaton1',
+       password: 'iH2m03A#'
+     });
+    var map = egip.layers.createMap({
+        target: 'map',
+        layers: [egip.layers.createTiles2GIS()],
+        view: egip.layers.createViewWGS({
+            zoom: 7
+        }),
+    });
+    egip.layers.switchMapTo3857(map);
+    const ui = {
+        login: document.getElementById('login'),
+        password: document.getElementById('password'),
+        loginBtn: document.getElementById('loginBtn'),
+        logoutBtn: document.getElementById('logoutBtn'),
+        layerId: document.getElementById('layerId'),
+        layerRevisionId: document.getElementById('layerRevisionId'),
+    };
+    ui.layerId.value = `9223372036854775804`;
+    ui.layerRevisionId.value = `9223372036854775795`;
+    let removeHotelsaLayer;
+    removeHotelsaLayer = hotelsLayer();
+    ui.loginBtn.onclick = function () {
+        egip.api.login({
+            login: ui.login.value,
+            password: ui.password.value,
+        })
+            .then(res => {
+            if (!res.data) {
+                removeHotelsaLayer = hotelsLayer();
+                alert("Вход: успешно");
+            }
+            else {
+                alert(JSON.stringify(res.data));
+            }
+        })
+            .catch(err => {
+            alert(JSON.stringify(err.response));
+        });
+    };
+    ui.logoutBtn.onclick = function () {
+        egip.api.logout()
+            .then(res => {
+            if (!res.data) {
+                // const tiles = egip.layers.getTileLayer(map) as any
+                // map.removeLayer(tiles)
+                removeHotelsaLayer = hotelsLayer();
+                alert("Выход: успешно");
+            }
+            else {
+                alert(JSON.stringify(res.data));
+            }
+        })
+            .catch(err => {
+            // alert("403: не авторизован")
+            alert(JSON.stringify(err.response));
+        });
+    };
+    function hotelsLayer() {
+        removeHotelsaLayer && removeHotelsaLayer();
+        const layer = egip.layers.createStandardLayerWMSC(ui.layerId.value, 'EPSG:3857', ui.layerRevisionId.value, {
+            r: Math.random()
+        });
+        map.addLayer(layer);
+        // const tiles = egip.layers.getTileLayer(map) as any
+        // tiles.getSource().updateParams({
+        //   r: Math.random()
+        // })
+        // const layer = addLayer(map, 'hotels', '9223372036854775800', '9223372036854775791') // 3141878
+        return function () {
+            map.removeLayer(layer);
+        };
+    }
+    function addLayer(map, name, id, revisionId) {
+        const layer = egip.layers.createStandardLayerWMSC(id, 'EPSG:3857', revisionId);
+        addCheckboxInteraction(map, layer, name);
+        map.addLayer(layer);
+        return layer;
+    }
+    function addCheckboxInteraction(map, layer, name) {
+        const checkbox = document.getElementById(name);
+        checkbox.checked = true;
+        checkbox.onchange = (evt) => {
+            if (evt.target.checked) {
+                map.addLayer(layer);
+            }
+            else {
+                map.removeLayer(layer);
+            }
+        };
+    }
+}());
+
+  //window.egip.api...
+  //window.egip.layers...
+</script>
+</body>
+
+
+
+</html>
