@@ -5,7 +5,13 @@ import { handleActions } from 'redux-actions'
 import { MainState } from './types'
 
 const initState: MainState = {
-  loading: true,
+  user: null,
+  isLoading: true,
+  UIState: {
+    userName: '',
+    password: '',
+    token: null,
+  },
 }
 
 export default handleActions({}, initState)

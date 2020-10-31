@@ -13,8 +13,7 @@ const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
 })
 
 const mapDispatchToProps = {
-  fetchCardList: actions.fetchCardList,
-  fetchAbilityHero: actions.fetchAbilityHero,
+  authentication: actions.authentication,
 }
 
 export const connector = connect(mapStateToProps, mapDispatchToProps)

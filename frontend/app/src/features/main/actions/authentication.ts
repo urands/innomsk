@@ -2,33 +2,19 @@ import * as t from '../actionTypes'
 import axios, { AxiosResponse } from 'axios'
 
 type Response = {
-  abilities: []
-  base_experience: 157
-  forms: []
-  game_indices: []
-  height: number
-  held_items: []
-  id: number
-  is_default: boolean
-  location_area_encounters: string
-  moves: []
-  name: string
-  order: number
-  species: {}
-  sprites: {}
-  stats: []
-  types: []
-  weight: 650
+  role: string
+  access_token: string
 }
 
 type Payload = {
-  about: {}
+  role: string
+  token: string
 }
 
-export type FeatchAbilityHeroAction = FSA<undefined, Payload, string>
-type FetchAbilityHero = (api: string) => MrxThunk<FeatchAbilityHeroAction>
+export type AuthenticationAction = FSA<undefined, Payload, string>
+type Authentication = (userName: string, password: string) => MrxThunk<AuthenticationAction>
 
-export const fetchAbilityHero: FetchAbilityHero = (api) => async (dispatch) => {
+export const authentication: Authentication = (userName, password) => async (dispatch) => {
   dispatch({
     type: t.FETCH_ABILITI_HERO,
     meta: { done: false },
@@ -37,7 +23,7 @@ export const fetchAbilityHero: FetchAbilityHero = (api) => async (dispatch) => {
   try {
     const { data }: AxiosResponse<Response> = await axios({
       method: 'GET',
-      url: `${api}`,
+      url: ``,
     })
 
     if (!data) {
@@ -47,7 +33,8 @@ export const fetchAbilityHero: FetchAbilityHero = (api) => async (dispatch) => {
     dispatch({
       type: t.FETCH_ABILITI_HERO,
       payload: {
-        about: { ...data },
+        role: '',
+        token: '',
       },
       meta: { done: true },
     })
