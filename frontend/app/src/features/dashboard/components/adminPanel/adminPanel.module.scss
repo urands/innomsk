@@ -10,5 +10,44 @@
         font-size: 24px;
         line-height: 28px;
         color: #444444;
+        margin-bottom: 22px;
+    }
+    .analitics {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .analiticsImage {
+        margin-bottom: 22px;
+        margin-right: 21px;
+    }
+    .analiticsBlock {
+        min-width: 250px;
+        margin-bottom: 22px;
+        margin-right: 21px;
+        padding-left: 31px;
+        padding-top: 19px;
+        padding-right: 24px;
+        padding-bottom: 24px;
+        height: 100px;
+        left: 36px;
+        top: 436px;
+        background: #ffffff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .quantity {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        line-height: 35px;
+        color: #444444;
+    }
+    .completeTask {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #888888;
     }
 }
