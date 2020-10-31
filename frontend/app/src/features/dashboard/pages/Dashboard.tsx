@@ -22,8 +22,8 @@ const Dashboard = (props: PropsFromRedux) => {
     <MainLayout role={role}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {renderPanel()}
           <div className={styles.inner}>
+            {renderPanel()}
             <div className={styles.wrapperMap}>
               <Map />
             </div>
