@@ -7,12 +7,7 @@ const inspectorPanel = () => {
     <div className={styles.panel}>
       <div className={styles.block}>
         <h3 className={styles.header}>Задание</h3>
-        <ol className={styles.list}>
-          <li className={styles.task}>Проверить две ямы на Бабаевской 3</li>
-          <li className={styles.task}>Проверить состояние ям на 2-ой Сокольнической улице</li>
-          <li className={styles.task}>Проверить бордюры в Песочном переулке</li>
-          <li className={styles.task}>Оценить ремонт ямы в Микульском переулке</li>
-        </ol>
+        <p className={styles.task}>Проверить четыре ямы на Бабаевской 3</p>
       </div>
       <div className={styles.block}>
         <h3 className={styles.header}>Прогресс</h3>
@@ -35,6 +30,10 @@ const inspectorPanel = () => {
         </ul>
         <button className={styles.addFile}>Добавить файл</button>
         <button className={styles.submit}>Отправить</button>
+      </div>
+      <div className={styles.buttonBlock}>
+        <button className={styles.prev}>Предыдущее</button>
+        <button className={styles.next}>Следующее</button>
       </div>
     </div>
   )
