@@ -30,6 +30,7 @@
     "semi": "off",
     "space-before-function-paren": "off",
     "jsx-quotes": ["error", "prefer-single"],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "comma-dangle": ["never"]
   }
 }
