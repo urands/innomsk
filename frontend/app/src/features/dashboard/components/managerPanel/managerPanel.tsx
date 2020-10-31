@@ -105,7 +105,7 @@ const managerPanel = () => {
           </li>
           <li className={styles.item}>
             <h3 className={styles.header}>Комментарий</h3>
-            <textarea className={styles.textArea}>Ямы на Бабаевской были размером 2*3. На бордюре скол слева</textarea>
+            <textarea className={styles.textArea}>Введите текст</textarea>
           </li>
         </ul>
         <button className={styles.submit}>Назначить</button>
