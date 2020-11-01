@@ -21,6 +21,15 @@ class User(db.Model):
     password = db.Column(db.String(128))
     role = db.Column(db.String(32), default= INSPECTOR)
     car = db.Column(db.String(32), default=None)
+    fio = db.Column(db.String(32), default=None)
+
+    def to_dict(self):
+        return {
+            'username': self.username,
+            'role': self.role,
+            'fio': self.fio,
+            'car': self.car,
+        }
 
 
     def verify_password(self, password):
@@ -99,6 +108,37 @@ class Objects(db.Model):
             'geometry': self.geometry
         }
 
+
+@dataclass
+class Tasks(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task_id = db.Column(db.Integer, index=True)
+    inspector_id = db.Column(db.Integer, index=True)
+    inspect = db.Column(db.JSON)
+    progress = db.Column(db.Integer)
+    inspection_date = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    modify_date = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+
+
+    def to_dict(self):
+        return {
+            "id" : self.task_id,
+            "inspect" : self.inspect,
+            "inspection_date": self.inspection_date.isoformat()
+        }
+
+
+class Comments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task_id = db.Column(db.Integer, index=True)
+    inspector_id = db.Column(db.Integer, index=True)
+    message = db.Column(db.String(512))
+    date = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    def __str__(self):
+        return self.message
+    def __repr__(self):
+        return self.message
 
 db.create_all()
 db.session.commit()

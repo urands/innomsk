@@ -3,6 +3,8 @@ from flask_jwt_extended import jwt_required
 from models import User, TitleLists, TitleObjects, Objects, db
 from flask import abort
 from datetime import datetime
+from shared import app
+from flask import jsonify, request
 import werkzeug
 import pandas as pd
 
@@ -54,10 +56,29 @@ class TitleList(Resource):
         return {'message': 'File was uploaded and processed'}, 200
 
     def get(self, id = None):
+        data = request.get_json()
+        area = None
+        if data is not None:
+            area = data.get('area')
         if id is None:
             tls = TitleLists.query.all()
             return list(map(TitleLists.as_dict, tls))
         else:
-            objs = TitleObjects.query.filter_by(title_id=id).all()
+            if area is None:
+                objs = TitleObjects.query.filter_by(title_id=id).all()
+            else:
+                objs = TitleObjects.query.filter_by(title_id=id).filter_by(area=area).all()
+
             return list(map(TitleObjects.as_dict, objs))
 
+@app.route('/areas')
+def get_areas():
+    obj = db.session.query(TitleObjects.area).distinct()
+    areas = [k[0] for k in list(obj)]
+    return jsonify(areas)
+
+
+@app.route('/inspectors')
+def get_inspectors():
+    ins = User.query.filter_by(role=User.INSPECTOR).all()
+    return jsonify([ insp.to_dict() for insp in ins])

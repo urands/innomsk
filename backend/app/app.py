@@ -5,6 +5,7 @@ from uploadxml import TitleList
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import abort
 from objects import ObjectController
+from tasks import TaskController
 
 from models import User
 
@@ -32,26 +33,9 @@ api.add_resource(Test, '/test')
 api.add_resource(TitleList, '/titlelist')
 api.add_resource(TitleList, '/titlelist/<int:id>', endpoint='get_objects')
 api.add_resource(ObjectController, '/object/<int:id>')
+api.add_resource(TaskController, '/tasks')
+api.add_resource(TaskController, '/tasks/<int:task_id>', endpoint='post')
 
-
-
-@app.route('/norm', methods=['POST'])
-def address_normalize():
-    pass
-    ''''
-    data = request.form.get('address')
-    if data is None:
-        data = request.json
-        if 'address' not in data:
-            return Response(
-                "Неверные входные параметры. Укажите 'address'",
-                status=400,
-            )
-    address = address_parse(data)
-    if address is None:
-        return jsonify({'error': 'Адрес не получается восстановить'})
-        '''
-    #return jsonify(address)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

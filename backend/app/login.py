@@ -46,5 +46,5 @@ def login():
 
     db.session.add(user)
     db.session.commit()
-    return jsonify({'username': user.username, 'role': user.role,
+    return jsonify({'username': user.username, 'role': user.role, 'fio' : user.fio,
                     'access_token': access_token, 'refresh_token': refresh_token  }), 200
