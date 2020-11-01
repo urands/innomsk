@@ -18,9 +18,9 @@ type Payload = {
 }
 
 export type AuthenticationAction = FSA<undefined, Payload, string>
-type Authentication = (username: string, password: string) => MrxThunk<AuthenticationAction>
+type Authentication = (login: string, password: string) => MrxThunk<AuthenticationAction>
 
-export const authentication: Authentication = (username, password) => async (dispatch) => {
+export const authentication: Authentication = (login, password) => async (dispatch) => {
   dispatch({
     type: t.LOGIN,
     meta: { done: false },
@@ -31,16 +31,18 @@ export const authentication: Authentication = (username, password) => async (dis
       method: 'POST',
       url: `${API}/api/login`,
       data: {
-        username,
+        username: login,
         password,
       },
     })
+
+    console.log(data)
 
     if (!data) {
       throw new Error('Response you is not authorization!')
     }
 
-    const { access_token, role } = data
+    const { access_token, role, username } = data
 
     dispatch({
       type: t.LOGIN,

@@ -1,12 +1,10 @@
 @import 'assets/sass/styles';
-
 .panel {
   width: 100%;
   max-width: 285px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   .block {
     display: flex;
     flex-direction: column;
@@ -17,7 +15,6 @@
     padding: 15px;
     padding-top: 12px;
     margin-bottom: 15px;
-
     .header {
       align-self: start;
       font-family: Roboto;
@@ -27,9 +24,8 @@
       color: #444444;
       margin-bottom: 20px;
     }
-    .list {
+    .task {
       padding: 10px;
-      padding-left: 25px;
       width: 220px;
       background: #ffffff;
       font-family: Roboto;
@@ -37,16 +33,12 @@
       font-weight: normal;
       font-size: 14px;
       line-height: 16px;
-      color: #444444;
+      color: #888888;
     }
     .progress {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 8px solid #d90000;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 15px;
     }
     .progressText {
       font-family: Roboto;
@@ -70,9 +62,10 @@
       min-height: 29px;
       background: #ffffff;
       font-family: Roboto;
+      font-style: italic;
       font-size: 12px;
       line-height: 14px;
-      color: #000000;
+      color: #444444;
     }
     .stars {
       list-style: none;
@@ -113,6 +106,39 @@
       font-size: 14px;
       line-height: 16px;
       color: #ffffff;
+    }
+  }
+  .buttonBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    .prev {
+      border: none;
+      outline: none;
+      background-color: inherit;
+    }
+    .prev::before {
+      content: '';
+      width: 8px;
+      height: 14px;
+      position: absolute;
+      background-image: url('../../images/prev.png');
+      background-repeat: no-repeat;
+      margin-left: -15px;
+    }
+    .next {
+      border: none;
+      outline: none;
+      background-color: inherit;
+    }
+    .next::after {
+      content: '';
+      width: 8px;
+      height: 14px;
+      position: absolute;
+      background-image: url('../../images/next.png');
+      background-repeat: no-repeat;
+      margin-left: 5px;
     }
   }
 }

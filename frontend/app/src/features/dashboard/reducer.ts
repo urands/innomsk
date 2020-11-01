@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions'
 // import { produce } from 'immer'
 // import * as tm from '../main/actionTypes'
-import { SingleState } from './types'
+import { DashboardState } from './types'
 
-const initState: SingleState = {
+const initState: DashboardState = {
   loading: true,
 }
 
