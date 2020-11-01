@@ -1,5 +1,6 @@
 import React from 'react'
 import { CircularProgressbar } from 'react-circular-progressbar'
+import StarRatings from 'react-star-ratings'
 
 import styles from './inspectorPanel.module.scss'
 
@@ -63,18 +64,34 @@ const inspectorPanel = () => {
           <p className={styles.commentText}>Осталось заделать еще три ямы</p>
         </div>
       </div>
-      <div className={styles.block}>
+      <form className={styles.block} action='#'>
         <h3 className={styles.header}>Отчет</h3>
-        <ul className={styles.stars}>
-          <li className={styles.star}></li>
-          <li className={styles.star}></li>
-          <li className={styles.star}></li>
-          <li className={styles.star}></li>
-          <li className={styles.star}></li>
-        </ul>
-        <button className={styles.addFile}>Добавить файл</button>
-        <button className={styles.submit}>Отправить</button>
-      </div>
+        <StarRatings
+          rating={3}
+          starRatedColor='#F2AE00'
+          starHoverColor='#d90000'
+          changeRating={() => {
+            console.log('star')
+          }}
+          numberOfStars={5}
+          name='rating'
+          starDimension='20px'
+        />
+        <div className={styles.uploadWrapper}>
+          <label className={styles.label}>
+            <span>Добавить файл</span>
+            <input type='file' />
+          </label>
+        </div>
+        <button
+          className={styles.submit}
+          onClick={(e) => {
+            e.preventDefault()
+          }}
+        >
+          Отправить
+        </button>
+      </form>
       <div className={styles.buttonBlock}>
         <button className={styles.prev}>Предыдущее</button>
         <button className={styles.next}>Следующее</button>
