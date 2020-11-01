@@ -40,60 +40,62 @@
       height: 150px;
       margin-bottom: 15px;
     }
-    .progressText {
-      font-family: Roboto;
-      font-size: 36px;
-      line-height: 42px;
-      color: #444444;
+    .commentBlock {
+      .commentHeader {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 16px;
+        color: #000000;
+        margin-bottom: 8px;
+      }
+
+      .commentText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        min-height: 29px;
+        background: #ffffff;
+        font-family: Roboto;
+        font-style: italic;
+        font-size: 12px;
+        line-height: 14px;
+        color: #444444;
+      }
     }
-    .commentHeader {
-      font-family: Roboto;
-      font-size: 14px;
-      font-weight: normal;
-      line-height: 16px;
-      color: #000000;
-      margin-bottom: 8px;
+
+    .uploadWrapper {
+      margin-bottom: 18px;
+      margin-top: 14px;
+
+      input[type='file'] {
+        outline: 0;
+        display: none;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .label {
+        width: 200px;
+        border: 1px solid rgba(217, 0, 0, 0.2);
+        border-radius: 5px;
+        background-color: #ffffff;
+        display: block;
+        padding: 7px;
+        transition: border 300ms ease;
+        cursor: pointer;
+        text-align: center;
+
+        span {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16px;
+          color: rgba(217, 0, 0, 0.5);
+        }
+      }
     }
-    .commentText {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 220px;
-      min-height: 29px;
-      background: #ffffff;
-      font-family: Roboto;
-      font-style: italic;
-      font-size: 12px;
-      line-height: 14px;
-      color: #444444;
-    }
-    .stars {
-      list-style: none;
-      display: flex;
-      margin-top: -37px;
-    }
-    .star {
-      width: 15px;
-      height: 15px;
-      margin-right: 6px;
-      margin-bottom: 21px;
-      background-image: url('../../images/star.png');
-      background-repeat: no-repeat;
-    }
-    .addFile {
-      width: 200px;
-      height: 30px;
-      background: #ffffff;
-      border: 1px solid rgba(217, 0, 0, 0.2);
-      border-radius: 5px;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 16px;
-      color: rgba(217, 0, 0, 0.5);
-      margin-bottom: 17px;
-    }
+
     .submit {
       width: 100px;
       height: 26px;
@@ -106,8 +108,16 @@
       font-size: 14px;
       line-height: 16px;
       color: #ffffff;
+      outline: none;
+      transition: background-color ease-out 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(217, 0, 0, 0.7);
+      }
     }
   }
+
   .buttonBlock {
     display: flex;
     justify-content: space-between;
